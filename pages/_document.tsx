@@ -1,13 +1,31 @@
 import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { IconContext } from 'react-icons'
+import * as snippet from '@segment/snippet';
+
+const { ANALYTICS_WRITE_KEY, NODE_ENV } = process.env;
 
 export default class MyDocument extends Document {
+
+  renderSegmentSnippet() {
+    const config = {
+      apiKey: ANALYTICS_WRITE_KEY,
+      page: true
+    }
+
+    if (NODE_ENV === 'development') {
+      return snippet.max(config)
+    }
+
+    return snippet.min(config)
+  }
+
   render() {
     return (
       <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
         <Html lang='en'>
           <Head>
+            <script dangerouslySetInnerHTML={{__html: this.renderSegmentSnippet()}}></script>
             <link rel='shortcut icon' href='/favicon.png' />
 
             <link
