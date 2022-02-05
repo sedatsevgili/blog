@@ -30,6 +30,7 @@ import { Loading } from './Loading'
 import { Page404 } from './Page404'
 import { PageHead } from './PageHead'
 import { PageActions } from './PageActions'
+import { ShareButtons } from './ShareButtons'
 import { Footer } from './Footer'
 import { PageSocial } from './PageSocial'
 import { GitHubShareButton } from './GitHubShareButton'
@@ -80,6 +81,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
 }) => {
   const router = useRouter()
   const lite = useSearchParam('lite')
+  const [url, setUrl] = React.useState('')
+
+  React.useEffect(() => {
+    setUrl(window.location.href)
+  }, [router.pathname])
 
   const params: any = {}
   if (lite) params.lite = lite
@@ -155,10 +161,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       )
     }
 
-    const tweet = getPageTweet(block, recordMap)
-    if (tweet) {
-      pageAside = <PageActions tweet={tweet} />
-    }
+    pageAside = <ShareButtons url={url} title={title} />
   } else {
     pageAside = <PageSocial />
   }
