@@ -163,6 +163,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
     pageAside = <PageSocial />
   }
 
+  global.analytics?.page()
+
   return (
     <TwitterContextProvider
       value={{

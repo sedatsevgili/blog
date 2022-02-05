@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@google-cloud/firestore": "^4.10.1",
+    "@segment/snippet": "^4.15.3",
     "classnames": "^2.3.1",
     "date-fns": "^2.25.0",
     "fathom-client": "^3.0.0",
