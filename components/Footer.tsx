@@ -12,6 +12,7 @@ export const Footer: React.FC<{
   toggleDarkMode: () => void
 }> = ({ isDarkMode, toggleDarkMode }) => {
   const [hasMounted, setHasMounted] = React.useState(false)
+  const [year, setYear] = React.useState('')
   const toggleDarkModeCb = React.useCallback(
     (e) => {
       e.preventDefault()
@@ -22,11 +23,14 @@ export const Footer: React.FC<{
 
   React.useEffect(() => {
     setHasMounted(true)
+    setYear(new Date().getFullYear().toString())
   }, [])
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.copyright}>Copyright 2021 {config.author}</div>
+      <div className={styles.copyright}>
+        Copyright {year} {config.author}
+      </div>
 
       {hasMounted ? (
         <div className={styles.settings}>
