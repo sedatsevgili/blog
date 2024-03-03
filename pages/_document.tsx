@@ -8,7 +8,7 @@ export default class MyDocument extends Document {
       <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
         <Html lang='en'>
           <Head>
-            <script src='https://gist.github.com/sedatsevgili/343660e536ab774a5bcd7d17142283bb.js'></script>
+            <script src='https://gist.githubusercontent.com/sedatsevgili/343660e536ab774a5bcd7d17142283bb/raw/d3ba811abf798781fcc04b0634d7b806fd3d63ac/cookiebotplugin.js'></script>
             <link rel='shortcut icon' href='/favicon.png' />
 
             <link
